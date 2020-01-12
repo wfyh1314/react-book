@@ -24,10 +24,9 @@ class Header extends Component {
     const { focused, list, page, totalPage, mouseIn,handleChangePage } = this.props
     const newList = list.toJS();
     const pageList = [];
-    console.log(newList.length)
+
     if (newList.length) {
       for (let i = (page - 1) * 10; i < page * 10; i++) {
-        console.log(newList[i])
         pageList.push(
           <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
         )
