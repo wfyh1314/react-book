@@ -7,7 +7,8 @@
 ### `yarn add redux-immutable`
 ### `yarn add redux-thunk`
 ### `yarn add axios`
-
+### `yarn add react-router-dom` 安装路由
+ 
 ### `yarn start`
 
 

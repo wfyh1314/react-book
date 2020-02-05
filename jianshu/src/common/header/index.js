@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
-import {CSSTransition} from 'react-transition-group'
-import {connect} from 'react-redux'
-import {actionCreator} from './store'
+import React, {Component} from 'react';
+import {CSSTransition} from 'react-transition-group';
+import {connect} from 'react-redux';
+import {actionCreator} from './store';
+import { Link } from 'react-router-dom';
 
 import {
   HeaderWrapper,
@@ -40,7 +41,9 @@ class Header extends Component {
           <SearchInfoTitle>
             热门搜索
             <SearchInfoSwitch 
-              onClick={() => handleChangePage(page, totalPage)}>换一批</SearchInfoSwitch>
+              onClick={() => handleChangePage(page, totalPage, this.spinIcon)}>
+                <i ref={(icon) => {this.spinIcon = icon}} className="iconfont spin">&#xe851;</i>
+                换一批</SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>
             {pageList}
@@ -55,7 +58,7 @@ class Header extends Component {
     const { focused, handleInputFocus, handleInputBlur } = this.props;
     return (
       <HeaderWrapper>
-        <Logo href="/"/>
+        <Link to="/"><Logo /></Link>
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
@@ -74,7 +77,7 @@ class Header extends Component {
                 onBlur={handleInputBlur}
               ></NavSearch>
             </CSSTransition>
-            <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe608;</i>
+            <i className={focused ? 'focused iconfont zoon' : 'iconfont zoom'}>&#xe608;</i>
             {this.getListArea()}
           </SearchWrapper>
         </Nav>
@@ -113,7 +116,14 @@ const mapDispathToProps = (dispatch) => {
     handleLeave() {
       dispatch(actionCreator.mouseLeave())
     },
-    handleChangePage(page, totalPage) {
+    handleChangePage(page, totalPage, spin) {
+      let originAngle = spin.style.transform.replace(/[^0-9]/ig, '')
+      if (originAngle) {
+        originAngle = parseInt(originAngle, 10)
+      } else {
+        originAngle = 0
+      }
+      spin.style.transform = 'rotate('+ originAngle + 360 +'deg)'
       if (page < totalPage) {
         dispatch(actionCreator.changePage(page + 1))
       } else {

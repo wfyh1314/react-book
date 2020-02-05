@@ -6,7 +6,7 @@ export const HeaderWrapper = styled.div`
     height: 58px;
     border-bottom: 1px solid #f0f0f0;
 `
-export const Logo = styled.a`
+export const Logo = styled.div`
     display: block;
     width: 100px;
     height: 56px;
@@ -43,7 +43,7 @@ export const SearchWrapper = styled.div`
     float: left;
     position: relative;
     
-    .iconfont {
+    .zoom {
         position: absolute;
         right: 5px;
         bottom: 5px;
@@ -100,6 +100,7 @@ export const SearchInfo = styled.div`
     width: 240px;
     padding: 0 20px;
     box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    background: #fff;
 `
 export const SearchInfoTitle = styled.div`
    margin-top: 20px;
@@ -111,6 +112,15 @@ export const SearchInfoTitle = styled.div`
 export const SearchInfoSwitch = styled.div`
     float:right;
     font-size: 13px;
+    cursor: pointer;
+    .spin {
+        display:block;
+        float: left;
+        font-size: 12px;
+        margin-right: 2px;
+        transition: all .2s ease-in;
+        transform-origin: center center;
+    }
 `
 export const SearchInfoList = styled.div`
     overflow: hidden;
