@@ -30,17 +30,19 @@ class Home extends PureComponent {
     componentDidMount() {
         this.props.changeHomeData()
         this.bindEvents()
-    }
+    };
+
     componentWillUnmount() {
         window.removeEventListener('scroll', this.props.changeScrollTopShow)
-    }
+    };
+
     bindEvents() {
         window.addEventListener('scroll', this.props.changeScrollTopShow)
     }
 }
 const mapState = (state) => ({
     showScroll: state.getIn(['home', 'showScroll'])
-})
+});
 
 const mapDispatch = (dispatch) => ({
     changeHomeData() {
@@ -56,7 +58,6 @@ const mapDispatch = (dispatch) => ({
             dispatch(action)
         }
     }
-})
-
+});
 
 export default connect(mapState, mapDispatch)(Home);
